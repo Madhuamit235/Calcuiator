@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="index.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculator</title>
+</head>
+
+<body>
+  <!-- Calculator start -->
+  <div class="calculator">
+    <div class="calc-des">
+      <input type="text" maxlength="9" placeholder="0">
+    </div>
+    <div class="text">
+      <div class="digit">
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>+</button>
+      </div>
+      <div class="digit">
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>-</button>
+      </div>
+      <div class="digit">
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button>*</button>
+      </div>
+      <div class="digit">
+        <button>0</button>
+        <button>C</button>
+        <button>=</button>
+        <button>/</button>
+      </div>
+    </div>
+  </div>
+  <!-- Calculator end -->
+  
+  <script>
+   const inputField = document.querySelector('.calc-des input');
+const buttons = document.querySelectorAll('.digit button');
+
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    const value = button.textContent;
+
+    if (value === 'C') {
+      inputField.value = '';
+    } else if (value === '=') {
+      try {
+        inputField.value = eval(inputField.value); // Use eval carefully
+      } catch {
+        inputField.value = 'Error';
+      }
+    } else {
+      inputField.value += value;
+    }
+  });
+});
+  </script>
+</body>
+
+</html>
